@@ -85,4 +85,4 @@ document.getElementById(`quote-box`).innerHTML=htmlGoesHere
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
-// This is a commit practice
+// This is a commit practice fdmfmfmfmfmfmfmfmfmddddddddd
