@@ -1,10 +1,14 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-By Michael Greco
-******************************************/
+// Event listener to respong to "Show another quote" button clicks
+// When user clicks anywhere on the button, the "printQuote" funtion is called.
+document.getElementById('loadQuote').addEventListener("Click", printQuote, false);
+var message = '';
+var red;
+var green;
+var blue;
+var viewedQuotes =[];
 
-let quotes = [
+// Array to hold quotes, sources, citations & years.
+var quotes = [
 {
   quotes: "The best surfer out there is the one having the most fun.",
   source: "Phil Edwards",
@@ -39,50 +43,70 @@ let quotes = [
   citation: "Surf Careers",
   year: "2019"
 },
-]
-console.log(quotes);
+];
 
-/***
-  Create the `getRandomQuote` function to:
-   - Create a variable to store a random number 
-   - Cse the random number to `return` a random quote object from the `quotes` array.
-***/
 
-const getRandomQuote = (array) => { // Defining a function called get random quote with a para called array
-  var storeRandomNumber; //defining a var calling it store random number
-  storeRandomNumber = Math.floor(Math.random() * array.length); //math.random generates a random number 0 -1 //rounds down
-  return array[storeRandomNumber] // returning the seleted quote object
+
+
+
+
+
+
+
+function printQuote() {
+  var outputDiv = document.getElementById('quote-box');
+  outputDiv.innerHTML = quote;
 }
-console.log(getRandomQuote(quotes)) 
+// Function to get a random object from quotes array and store in variable "randomQuote"
+function getRandomQuote() {
+  var randomQuote = Math.floor(Math.random() * quotes.length);
 
-/* <p class="quote">Every great developer you know got there by solving problit.</p>
-<p class="source">Patrick McKenzie
-<span class="citation">Twitter</span>
-<span class="year">2016</span>
-</p> */
-
-
-
-
-
-const printQuote = () => { //defining the function called print quote without any pera
-  var getQuotes = getRandomQuote(quotes) //calling the function getrandomquotes
-  var htmlGoesHere = ''; //getting a new var and setting it to null quotes indiate its a string variable
-  var citation = getQuotes.citation; 
-  var year = getQuotes.year;
-
-htmlGoesHere = `<p class = "quote" >${getQuotes.quotes} </p> <p class = "source" >${getQuotes.source}`
-if (citation) {
-  htmlGoesHere = `${htmlGoesHere} <span class="citation">${citation}</span>`
-}
-if (year) {
-  htmlGoesHere = `${htmlGoesHere} <span class="year">${year}</span>`
-}
-htmlGoesHere = `${htmlGoesHere}</p>`
-document.getElementById(`quote-box`).innerHTML=htmlGoesHere
+  var splicedQuote = quotes.splice(randomQuote, 1)[0];
+  viewedQuotes.push(splicedQuote);
+  if ( quotes.length === 0 ) {
+          quotes = viewedQuotes;
+          viewedQuotes = [];
+  }
+  return splicedQuote;
 }
 
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+// Function to generate random rgb color value.
+function randomColorGenerator() {
+  var randomColor;
+  red = Math.floor(Math.random() * 256 );
+  green = Math.floor(Math.random() * 256 );
+  blue = Math.floor(Math.random() * 256);
+  randomColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+  return randomColor; 
+}
 
 
-// This is a commit practice fdmfmfmfmfmfmfmfmfmddddddddd
+
+// Function to take presviously selected random quote from array & print to screen.
+function printQuote() {
+  // On click event, function "printQuote" runs, then fires the "randomQuote" function.
+  var quotes = getRandomQuote();
+  message ='<p class="quote">' + quotes.quote + '</p>';
+  message += '<p class="source">' + quotes.source;
+  if ( quotes.citation ) {
+          message += '<span class="citation">' + quotes.citation + '</span>';
+  } else {
+          message += '';
+  }
+  if (quotes.year) {
+          message += '<span class="year">' + quotes.year + '</span></p>';
+  } else {
+          message += '';
+  }
+  if ( quotes.tags ) {
+          message += '<h3>' + quotes.tags + '</h3>';
+  } else {
+          message += '';
+  }
+  print(message);
+  // Generate random color.
+  randomColorGenerator();
+  // Update background with new random color.
+  document.getElementById('bgcolor').style.backgroundColor = randomColorGenerator;
+
+}

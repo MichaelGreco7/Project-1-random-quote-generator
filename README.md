@@ -37,5 +37,4 @@ Each quote should have the following properties:
  - [x] Refresh the quote after a set amount of time. For example, every 30 seconds, make a new quote appear. (You can use the setInterval() or setTimeout() method to do this -- see the links in the Project Resources listing.)
 
 # View Project
-- [Live Demo] 
-+ [Live Demo] 
++ [Live Demo] (file:///Users/michaelgreco/TREEHOUSE%20PROJECTS/a_random_quote_generator-v1/index.html)
