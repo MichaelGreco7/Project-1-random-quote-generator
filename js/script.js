@@ -45,14 +45,6 @@ var quotes = [
 },
 ];
 
-
-
-
-
-
-
-
-
 function printQuote() {
   var outputDiv = document.getElementById('quote-box');
   outputDiv.innerHTML = quote;
