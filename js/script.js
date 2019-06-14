@@ -1,14 +1,14 @@
 // Event listener to respong to "Show another quote" button clicks
 // When user clicks anywhere on the button, the "printQuote" funtion is called.
 document.getElementById('loadQuote').addEventListener("Click", printQuote, false);
-var message = '';
-var red;
-var green;
-var blue;
-var viewedQuotes =[];
+const message = '';
+const red;
+const green;
+const blue;
+const viewedQuotes =[];
 
 // Array to hold quotes, sources, citations & years.
-var quotes = [
+let quotes = [
 {
   quotes: "The best surfer out there is the one having the most fun.",
   source: "Phil Edwards",
